@@ -1,13 +1,13 @@
 export class Client {
+  
    id_Client : number;
    nom : String ; 
    prenom : String;
-   age : number;
-   login : String;
+   dateN : Date;
+   image : File;
    password : String;
    mail:String;
    tel : number;
-   description : String
-  
+   genre : String
 
 }

@@ -1,0 +1,37 @@
+
+
+     <body>
+     
+     <div class="resume">
+        
+     
+       
+       <div class="resume_right">
+         <div class="resume_item resume_about">
+             <div class="title">
+                 <br> <br>
+                <p style="font-size: 30px ; color: #49aba8">S'inscrire ... </p>
+              </div>
+              <br><br>
+              <div class="info">
+             <p>Vous êtes :</p>
+             </div>
+         </div>
+         <form  #f="ngForm"  (ngSubmit)="onSubmit(f)" class="form-group" >
+           
+         <select  name="choix"  [(ngModel)]="choix" style="width: 400px; height:45px ; border-radius: 10px; border-color: #49aba8;"  >
+            <option value="client"   >Je suis un client </option>
+            <option value="freelancer"   >Je suis un Freelancer</option>
+         </select>
+     <br><br><br>
+     <div style="padding-left: 350px;">
+        <button type="submit" class="submitButton" > Continuer </button></div>
+           
+         </form>  
+         </div>
+         <br><br>
+       </div>
+
+   
+     </body>
+ 

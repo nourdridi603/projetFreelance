@@ -1,0 +1,102 @@
+
+
+
+
+<body >
+
+<div class="top">
+    <h2 style="color: #49aba8;"> Inscription du Client </h2>
+    </div>
+    <div class="container" >
+       
+        <form    #form="ngForm" (ngSubmit)="onSubmit(form)">
+    
+    <fieldset class="inscri">
+       <legend style="color: #49aba8;"> Inscription :</legend>
+     <!-- image -->      
+       <label >Ajouter votre photo :</label>
+       
+       <input type="file" id="myfile" name="myfile" [(ngModel)]="user.image" ><BR>
+      
+        
+      <!-- mail -->      
+        <label style="font-family: sans-serif;">Donnez Votre adresse email :</label>
+        <input type="email" id="mail" name="mail" [(ngModel)]="user.mail"   required  #zoneMail="ngModel"      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  class="form-control"  >
+        <div *ngIf="zoneMail.invalid && zoneMail.dirty" class="alert alert-danger"> L'email doit sous la forme *****@****.**  </div>
+        <div [hidden]="!zoneMail.errors?.required || zoneMail?.pristine" class="alert alert-danger"> L'email est obligatoire </div>
+      <!-- mo de passe -->   
+        <label>Mot de passe :</label>
+        <input type="password" id="pwd" name="pwd" [(ngModel)]="user.password" required  pattern=".{8,}" class="form-control"   #zonePwd="ngModel">
+        <div *ngIf="zonePwd.errors?.pattern && zonePwd.dirty"  class="alert alert-danger"> Le titre doit contenir au moins 8 caractéres</div>
+        <div [hidden]="!zonePwd.errors?.required || zonePwd.pristine" class="alert alert-danger"> Le mot de passe est  obligatoire </div>
+    
+        
+        <!-- Nom -->   
+        <label>Donnez votre nom :</label>
+        <input type="text" id="n" name="n" [(ngModel)]="user.nom" required  #zoneN="ngModel"  pattern="[A-Z][a-zA-Z]+"  class="form-control"/>
+     <div [hidden]="!zoneN.errors?.required || zoneN.pristine" class="alert alert-danger"> Le nom est  obligatoire </div>
+     <div *ngIf="zoneN.errors?.pattern && zoneN.dirty"  class="alert alert-danger"> Le nom doit commencer par une majuscule suivie d'au moins 1 caractère </div>
+    
+      <!-- prenom  -->   
+      <label>Donnez votre prénom :</label>
+      <input type="text" id="p" name="p" [(ngModel)]="user.prenom" required  #zoneP="ngModel" pattern="[A-Z][a-zA-Z]+" class="form-control"/>
+    <div [hidden]="!zoneP.errors?.required || zoneP.pristine" class="alert alert-danger"> Le prénom est  obligatoire </div>
+    <div *ngIf="zoneP.errors?.pattern && zoneP.dirty"  class="alert alert-danger"> Le prenom doit commencer par une majuscule suivie d'au moins 1 caractère </div>
+    <!-- date de naissance -->
+        <label>Votre date de naissance :</label>
+        <input type="date" id="dateN" name="dateN" [(ngModel)]="user.dateN" required  #zoneD="ngModel" class="form-control"/>
+        <div [hidden]="!zoneD.errors?.required || zoneD.pristine" class="alert alert-danger"> La date de naissance est  obligatoire </div>
+    
+    <!-- Sexe  -->
+       <label>Genre  :</label>
+    
+       <select type="text" id="genre"  #zoneD="ngModel"  [(ngModel)]="user.genre" name="genre" class="form-control" required>
+            <option value="homme" >Homme</option>
+            <option value="femme"> Femme</option>
+       </select>
+       <div [hidden]="!zoneD.errors?.required || zoneD.pristine" class="alert alert-danger"> Le champs est  obligatoire </div>
+         
+    
+         
+       <!-- Num de tel  -->   
+      <label>Donnez votre numéro de téléphone :</label>
+      <input type="tel" id="NumT" name="NumT" [(ngModel)]="user.tel" required  #zoneNum="ngModel" class="form-control"/>
+       <div [hidden]="!zoneNum.errors?.required || zoneNum.pristine" class="alert alert-danger"> Le numéro de téléphone est  obligatoire </div>
+    
+       <div class="alert alert-success" *ngIf="submitted==true">
+        <strong>Succés!</strong> Inscription éffectuée.
+      </div>
+        <button  class="btn btn-primary" [disabled]="form.invalid" >S'inscrire </button>
+       <button type="reset" class="btn btn-primary">Réinitialiser</button>  
+    </fieldset>
+    </form>
+        </div>
+
+
+      </body>
+ 
+
+        <!--div *ngIf="editState && userToEdit.nom == user.nom">
+            <form (ngSubmit)="updateProd(user)">
+              <div>
+                <div>
+                  <div>
+                    <label for="titre">Nom</label>
+                    <input type="text" [(ngModel)]="user.nom" placeholder="titre" name="c1" id="titre">
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="Description">Prenom</label>
+                    <input type="text" [(ngModel)]="user.prenom" placeholder="Description" name="c2" id="Description">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <input type="submit" class="btn btn-succes" value="Modifier">
+                </div>
+              </div>
+            </form>
+          </div-->
+      

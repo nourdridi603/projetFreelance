@@ -1,13 +1,16 @@
 export class Freelancer {
+   
+
+
     id_Freelancer : number;
+    image : File;
     nom : String;
     prenom : String;
-    niveau : String;
-    diplome : String;
-    login : String;
+    dateN :Date ;
+    specialite : String;
     password : String;
+    genre: String;
     mail:String;
     tel : number;
-    description : String
-
+    CV : File
 }
