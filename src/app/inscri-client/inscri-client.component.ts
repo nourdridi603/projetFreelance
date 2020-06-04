@@ -34,22 +34,28 @@ export class InscriClientComponent implements OnInit {
    
   };
 
+
   onSubmit(f:NgForm) {
     this.user.genre=f.value['genre'];
-  
+    this.user.id_Client=this.user.id_Client+1;
+
     this.submitted = true;
     this.usersService.addUser(this.user);
-
+   
   }
  
   ngOnInit() {
     this.getProdList();
   }
+
+
+
   getProdList() {
     this.usersService.getUsersList().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
-          ({id: c.payload.doc.id, ...c.payload.doc.data()})
+          ({id: c.payload.doc.id,
+             ...c.payload.doc.data()})
         )
       )
     ).subscribe(users => {

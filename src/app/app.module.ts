@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ChoixComponent } from './choix/choix.component';
+import { Choix2Component } from './choix2/choix2.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ChoixComponent } from './choix/choix.component';
     InscriFreelancerComponent,
     LoginClientComponent,
     LoginFreelancerComponent,
-    ChoixComponent
+    ChoixComponent,
+    Choix2Component
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Client } from '../Classes/client';
 import {Observable} from 'rxjs';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,9 @@ export class ClientService {
   user: Observable<Client>;
   userDoc: AngularFirestoreDocument<Client>;
   userCollection: AngularFirestoreCollection<Client> = null;
-
+  liste = [];
+  use: any ;
+  test:boolean;
   constructor(public afs: AngularFirestore) { 
     this.userCollection = afs.collection(this.dbPath);
   }
@@ -25,11 +28,16 @@ export class ClientService {
   }
 
   addUser(user: Client) {
-    this.userCollection.add(user);
-    console.log(user);
+   
+        this.userCollection.add(user);
+        console.log(user);
+      
+
+   
   }
   updateUser(user: Client) {
     this.userDoc = this.afs.doc(`Client/${user.id_Client}`);
+
     this.userDoc.update(user);
   }
  

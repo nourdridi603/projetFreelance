@@ -10,15 +10,17 @@ import { LoginFreelancerComponent } from './login-freelancer/login-freelancer.co
 import { AcceuilComponent } from './acceuil/acceuil.component';
 
 import { ChoixComponent } from './choix/choix.component';
-
+import { Choix2Component } from './choix2/choix2.component';
 const routes: Routes = [
   
   { path: '', component: AcceuilComponent },
   { path: 'LoginClient', component: LoginClientComponent },
   { path: 'choix', component: ChoixComponent },
+  { path: 'choix2', component: Choix2Component },
   { path: 'LoginFreelancer', component: LoginFreelancerComponent },
   { path: 'inscriClient', component: InscriClientComponent },
   { path: 'inscriFreelancer', component: InscriFreelancerComponent},
+
 
    { path: '**', redirectTo: '' }
 ];

@@ -20,11 +20,11 @@
       <br>
   
       <!-- Login Form -->
-      <form>
+      <form  #f="ngForm">
         <input type="text" id="Email" class="fadeIn second" name="Email" placeholder="Votre adresse email">
         <input type="text" id="password" class="fadeIn third" name="login" placeholder="Mot de passe">
-        <input type="submit" class="fadeIn fourth" value="Log In" style="background-color: #49aba8;"><br>
-        <a routerLink="/InscriClient" class="btn btn-link">S'inscrire</a>
+        <input type="submit" class="fadeIn fourth" value="Log In" style="background-color: #49aba8;" ><br>
+        <a routerLink="/inscriClient" class="btn btn-link">S'inscrire</a>
       </form>
   
       <!-- Remind Passowrd -->
