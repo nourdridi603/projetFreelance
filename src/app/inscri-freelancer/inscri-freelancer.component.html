@@ -75,15 +75,21 @@
     <input type="file" id="cv" name="cv" [(ngModel)]="freelancer.CV" required  #zoneCV="ngModel" class="form-control" accept=".pdf" />
     
     <div [hidden]="!zoneCV.errors?.required || zoneCV.pristine" class="alert alert-danger"> Le champs est  obligatoire </div>
- 
+ <br>
  
     <div class="alert alert-success" *ngIf="submitted==true">
-      <strong>Succés!</strong> Inscription éffectuée.
-    </div>
+      <strong>Success!</strong> Inscription éffectuée.
+     </div>
+
+     <div class="alert alert-danger" *ngIf="exist==true">
+      <strong>Failed!</strong> Email déja utilisé.
+     </div>
+<br>
 
  
         <button  class="btn btn-primary" [disabled]="form.invalid" >S'inscrire </button>
-       <button type="reset" class="btn btn-primary">Réinitialiser</button>  
+       <button type="reset" class="btn btn-primary">Réinitialiser</button>  <br>
+       <a routerLink="/LoginFreelancer" class="btn btn-link"  style="color: #49aba8; padding-left: 300px;">Se connecter</a>
     </fieldset>
     </form>
         </div>

@@ -30,15 +30,11 @@ export class ClientService {
   addUser(user: Client) {
    
         this.userCollection.add(user);
+        
         console.log(user);
       
 
    
-  }
-  updateUser(user: Client) {
-    this.userDoc = this.afs.doc(`Client/${user.id_Client}`);
-
-    this.userDoc.update(user);
   }
  
 }

@@ -2,7 +2,7 @@ export class Freelancer {
    
 
 
-    id_Freelancer : number;
+    id : String;
     image : File;
     nom : String;
     prenom : String;

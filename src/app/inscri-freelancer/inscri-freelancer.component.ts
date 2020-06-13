@@ -3,7 +3,9 @@ import { FreelancerService } from '../Services/freelancer.service';
 import { Freelancer } from '../Classes/freelancer';
 import { NgForm } from '@angular/forms';
 import {map} from 'rxjs/operators';
-import { ToastrService } from 'ngx-toastr';
+
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-inscri-freelancer',
@@ -11,15 +13,20 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./inscri-freelancer.component.css']
 })
 export class InscriFreelancerComponent implements OnInit {
-
-  constructor(private usersService: FreelancerService , private toastr : ToastrService) {}
+  private dbPath = '/Freelancer';
+  freeCollection: AngularFirestoreCollection<Freelancer> = null;
+  constructor(private usersService: FreelancerService ,public afs: AngularFirestore) {
+    this.freeCollection = afs.collection(this.dbPath);
+  }
+  u:Freelancer;
+  exist=false;
   submitted = false;
   editState = false;
   r: string;
   userToEdit: Freelancer;
   freelancers: Freelancer[];
   freelancer = {
-    id_Freelancer : 0,
+    id : '',
     image : null,
     nom : '',
     prenom : '',
@@ -32,13 +39,45 @@ export class InscriFreelancerComponent implements OnInit {
     CV : null
    
   };
+
+  TabId=[]
+testId:string;
   onSubmit(f:NgForm) {
-  
+    this.exist=false;
+    this.submitted = false;
     
-    this.submitted = true;
-    this.usersService.addUser(this.freelancer);
-   
-  }
+
+    this.freeCollection.snapshotChanges().pipe(
+     map(changes =>
+       changes.map(c =>
+         ({id: c.payload.doc.id, ...c.payload.doc.data()})
+       )
+     )
+   ).subscribe(freelancers => {
+     this.freelancers = freelancers;
+   });
+  
+  
+   for( this.u of this.freelancers)
+       {if (this.u.mail == this.freelancer.mail)
+           {
+             this.exist=true;
+           }
+         }
+   if (this.exist==false) 
+     { do {
+           this.testId=String(Math.floor(Math.random() * Math.floor(99999999)));}
+       while (this.TabId.indexOf(this.testId)>0)
+       this.TabId.push(this.testId);
+       this.freelancer.id=this.testId;
+       this.usersService.addUser(this.freelancer);
+       console.log(this.freelancer);
+        this.submitted = true;}
+       
+ 
+  
+  
+ }
  
   ngOnInit() {
     this.getFreelancerList();

@@ -1,6 +1,6 @@
 export class Client {
   
-   id_Client : number;
+   id : String;
    nom : String ; 
    prenom : String;
    dateN : Date;

@@ -1,0 +1,147 @@
+<div class="container-fluid h-100 bg-light text-dark">
+    <div class="row justify-content-center align-items-center">
+      <h1>Ajouter un Offre</h1>    
+    </div>
+    <hr/>
+    <div class="row justify-content-center align-items-center h-100">
+  
+        <form>
+  
+         <!-- Nom du Projet -->
+          <div class="form-group">
+           <label style="font-weight: bold" for="inputEmail">Entrer le nom de votre projet</label>
+          <input type="text" class="form-control" id="nom" placeholder="" required [(ngModel)]="offre.nom" name="nom">
+          <div style="padding-top: 15px">
+          <p style="font-weight: bold"> Voici quelques bons exemples: </p>
+          <ul>
+              <li> Développeur nécessaire pour créer un thème WordPress réactif </li>
+              <li> Concepteur CAO pour créer un modèle 3D d'un immeuble résidentiel </li>
+          </ul>
+          </div>
+          </div>
+          <hr>
+  
+        <!-- Categorie de Projet -->
+  
+          <div class="form-group">
+          <label style="font-weight: bold"> Catégorie d'offre </label>
+          <p> Catégorisons votre travail, ce qui nous aide à personnaliser les détails de votre travail </p>
+  
+          <select class="form-control" id="categorie" required [(ngModel)]="offre.categorie" name="categorie">
+                      <option>Graphic Design</option>
+                      <option>Localization</option>
+                      <option>Developpement Web </option>
+                    </select>
+          </div>
+          <hr>
+  
+  
+          <!-- Description de l'offre -->
+          <div class="form-group">
+           <label style="font-weight: bold" for="inputEmail">Décrire votre Projet</label>
+         <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" id="description" required [(ngModel)]="offre.description" name="description"></textarea>
+         <div style="padding-top: 15px">
+         <p style="font-weight: bold"> Une bonne description comprend: </p>
+          <ul>
+              <li> Quel est le livrable </li>
+              <li> Type d'indépendant ou d'agence que vous recherchez </li>
+              <li> Tout ce qui est unique sur le projet, l'équipe ou votre entreprise </li>
+          </ul>
+      </div>
+      </div>
+      <hr>
+      
+      <!-- importer des fichiers -->
+  
+      <div class="form-group">
+          <label style="font-weight: bold" for="inputEmail">Fichiers de projet supplémentaires (facultatif)</label>
+         <div class="input-group">
+         <div class="input-group-prepend">
+           <span class="input-group-text" id="inputGroupFileAddon01">Importer</span>
+         </div>
+         <div class="custom-file">
+      <input type="file" class="custom-file-input" id="inputGroupFile01"
+        aria-describedby="inputGroupFileAddon01">
+      <label class="custom-file-label" for="inputGroupFile01">Ajouter des fichiers</label>
+      </div>
+      </div>
+        </div>
+       <hr>
+  
+      <!-- Payement -->
+  
+      <div class="form-group">
+      <label style="font-weight: bold" for="inputEmail">Comment voulez-vous payer ? </label>
+       <div class="container">
+       <div class="row">
+       <div class="col-sm">
+        <button (click)="heure()" class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">Payer à l'heure </h5>
+      <p class="card-text">populaire pour un projet en cours </p>
+      </div>
+      </button>
+       </div>
+  
+  
+       <div class="col-sm">
+        <button (click)="fixe()" class="card" style="width: 18rem;">
+        <div class="card-body">
+      <h5 class="card-title" style="text-align: center">Payer un prix fixe</h5>
+      <p class="card-text" style="text-align: center">Populaire pour un projet ponctuel</p>
+      </div>
+      </button>
+       </div>
+      </div>
+       </div>
+      </div>
+       
+       <div class="form-group" style="padding-top: 15px" *ngIf="mode == 'fixe'">
+       <label style="font-weight: bold" for="inputEmail">Quel est votre budget estimé ?</label>
+       <div class="input-group" >
+       <div class="col-xs-1">
+      <select class="form-control" id="currency" required [(ngModel)]="offre.currency" name="currency" >
+                      <option>TND</option>
+                      <option selected>USD</option>
+                      <option>EUR</option>
+                    </select>
+       </div>
+       <div class="col-xs-3">
+      <input type="number" class="form-control" placeholder="" id="budget" required [(ngModel)]="offre.budget" name="budget">
+      </div>
+       </div>
+       </div>
+       
+       
+       <div class="form-group" style="padding-top: 15px" *ngIf="mode == 'heure'">
+       <label style="font-weight: bold" for="inputEmail">Définir votre plage horaire</label>
+       <div class="input-group">
+        <div class="col-xs-1">
+       <select class="form-control" id="currency" required [(ngModel)]="offre.currency" name="currency">
+                       <option>TND</option> 
+                       <option selected>USD</option>
+                       <option>EUR</option>
+                     </select>
+        </div>
+        <div class="col-xs-2">
+        <input type="number" class="form-control" placeholder="" id="min_horaire" required [(ngModel)]="offre.budget" name="min_horaire">
+        </div>
+        <p style="padding : 5px "> to </p> 
+        <div class="col-xs-2">
+        <input type="number" class="form-control" placeholder="" id="max_horaire" required [(ngModel)]="offre.budget" name="max_horaire">
+        </div>
+        </div>
+        </div>
+        
+       <hr>
+      
+      <!-- Evaluation -->
+      
+       
+      <div class="form-group">
+           <div class="col"><button (click)="onSubmit()" class="col-4 btn btn-primary btn-sm float-left">Poster l'offre</button></div>
+           <div class="col"><button type="reset" class="col-4 btn btn-secondary btn-sm float-right">Reset</button></div>
+       </div>
+       </form>
+      </div>
+  </div>

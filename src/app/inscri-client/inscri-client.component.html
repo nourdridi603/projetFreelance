@@ -62,12 +62,19 @@
       <label>Donnez votre numéro de téléphone :</label>
       <input type="tel" id="NumT" name="NumT" [(ngModel)]="user.tel" required  #zoneNum="ngModel" class="form-control"/>
        <div [hidden]="!zoneNum.errors?.required || zoneNum.pristine" class="alert alert-danger"> Le numéro de téléphone est  obligatoire </div>
-    
+    <br>
        <div class="alert alert-success" *ngIf="submitted==true">
-        <strong>Succés!</strong> Inscription éffectuée.
-      </div>
+        <strong>Success!</strong> Inscription éffectuée.
+       </div>
+
+       <div class="alert alert-danger" *ngIf="exist==true">
+        <strong>Failed!</strong> Email déja utilisé.
+       </div>
+
+<br>
         <button  class="btn btn-primary" [disabled]="form.invalid" >S'inscrire </button>
-       <button type="reset" class="btn btn-primary">Réinitialiser</button>  
+       <button type="reset" class="btn btn-primary">Réinitialiser</button>  <br>
+       <a routerLink="/LoginClient" class="btn btn-link" style="color: #49aba8; padding-left: 300px;">Se connecter</a>
     </fieldset>
     </form>
         </div>
@@ -76,27 +83,4 @@
       </body>
  
 
-        <!--div *ngIf="editState && userToEdit.nom == user.nom">
-            <form (ngSubmit)="updateProd(user)">
-              <div>
-                <div>
-                  <div>
-                    <label for="titre">Nom</label>
-                    <input type="text" [(ngModel)]="user.nom" placeholder="titre" name="c1" id="titre">
-                  </div>
-                </div>
-                <div>
-                  <div>
-                    <label for="Description">Prenom</label>
-                    <input type="text" [(ngModel)]="user.prenom" placeholder="Description" name="c2" id="Description">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <input type="submit" class="btn btn-succes" value="Modifier">
-                </div>
-              </div>
-            </form>
-          </div-->
       
